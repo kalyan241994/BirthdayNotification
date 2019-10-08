@@ -26,13 +26,13 @@ public class BirthdayNotification {
 		trayIcon.setImageAutoSize(true);
 		trayIcon.setToolTip("System tray icon demo");
 		tray.add(trayIcon);
-		trayIcon.displayMessage("Birthday Remainder",name, MessageType.INFO);
+		trayIcon.displayMessage("Birthday Remainder ","Today "+name+" wish him now", MessageType.INFO);
 		}
 	catch(Exception ex){
 		ex.printStackTrace();
 	}
 	finally{
-		System.exit(1);
+		System.exit(0);
 	}
 	}
 	
