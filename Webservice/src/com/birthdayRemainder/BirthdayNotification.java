@@ -14,7 +14,7 @@ import java.io.FileReader;
 public class BirthdayNotification {
 
 	SystemTray tray = SystemTray.getSystemTray();
-	public void displayNotification(String name) throws AWTException{
+	public void displayNotification(String name) {
 	try{
 		String currentDir = System.getProperty("user.dir");
 		String imagePath = currentDir+"\\WebContent\\WEB-INF\\images\\1.jpg";
