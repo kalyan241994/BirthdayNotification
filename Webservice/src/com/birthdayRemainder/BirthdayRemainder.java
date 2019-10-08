@@ -44,6 +44,9 @@ public class BirthdayRemainder {
 							ex.printStackTrace();
 						}
 					}
+					else{
+						
+					}
 				}
 			}
 		}
