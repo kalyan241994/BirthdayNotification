@@ -14,7 +14,7 @@ import org.codehaus.jettison.json.JSONObject;
 
 public class W2sms {
 
-	public String ConnectW2sms()
+	public String ConnectW2sms(String phoneNumber, String personName)
 	{
 		String url = "https://www.way2sms.com";
 		try{
@@ -22,9 +22,10 @@ public class W2sms {
 	        JSONObject urlParameters = new JSONObject();
 	        urlParameters.put("apikey","");
 	        urlParameters.put("secret","");
-	        urlParameters.put("usetype","test");
-	        urlParameters.put("phone", "9182354913");
-	        urlParameters.put("message", URLEncoder.encode("hello","UTF-8"));
+	        urlParameters.put("usetype","stage");
+	        urlParameters.put("phone",phoneNumber);
+	        String message="Wish you many more Returns of the day: "+personName+ "\n By\n Gopichand";
+	        urlParameters.put("message", URLEncoder.encode(message,"UTF-8"));
 	        urlParameters.put("senderid","Bdynof");
 	        URL obj = new URL(url + "/api/v1/sendCampaign");
 	          // send data

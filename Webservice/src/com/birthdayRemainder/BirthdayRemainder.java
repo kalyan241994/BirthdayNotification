@@ -25,7 +25,7 @@ public class BirthdayRemainder {
 	
 				line = buff.readLine();
 				if (line == null) {
-					System.out.println("null");
+					System.out.println("Today there is no birtday babies");
 					break;
 				}
 				String[] a = line.split(" ");
@@ -39,7 +39,7 @@ public class BirthdayRemainder {
 							if(SystemTray.isSupported()){
 								BirthdayNotification birth = new BirthdayNotification();
 								W2sms w2sms = new W2sms();
-								String message=w2sms.ConnectW2sms();
+								String message=w2sms.ConnectW2sms(a[3],a[2]);
 								System.out.println(message);
 								birth.displayNotification(a[2]);
 							}
