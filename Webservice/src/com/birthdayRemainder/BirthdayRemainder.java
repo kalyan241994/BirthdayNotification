@@ -9,23 +9,28 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class BirthdayRemainder {
+import org.quartz.Job;
+import org.quartz.JobExecutionContext;
 
-	public static void main(String args[]) throws IOException, AWTException {
+public class BirthdayRemainder implements Job {
 
+	public void execute(JobExecutionContext context) {
+
+		int linecounter = 0;
+		int currentcounter=1;
 		SimpleDateFormat date = new SimpleDateFormat("dd/MM/YYYY");
 		Date todaysDate = new Date();
 		String currentDate = date.format(todaysDate);
 		String currentDir = System.getProperty("user.dir");
-		BufferedReader buff = new BufferedReader(new FileReader(currentDir + "\\gopi.txt"));
-
-		String line = buff.readLine();
-		try{	
+		BufferedReader buff = null;
+		try {
+			buff = new BufferedReader(new FileReader(currentDir + "\\gopi.txt"));
+			String line = buff.readLine();
 			while (line != null) {
-	
+				linecounter++;
 				line = buff.readLine();
+				
 				if (line == null) {
-					System.out.println("null");
 					break;
 				}
 				String[] a = line.split(" ");
@@ -38,9 +43,9 @@ public class BirthdayRemainder {
 						try{
 							if(SystemTray.isSupported()){
 								BirthdayNotification birth = new BirthdayNotification();
-								W2sms w2sms = new W2sms();
-								String message=w2sms.ConnectW2sms();
-								System.out.println(message);
+//								W2sms w2sms = new W2sms();
+//								String message=w2sms.ConnectW2sms(a[3],a[2]);
+//								System.out.println(message);
 								birth.displayNotification(a[2]);
 							}
 						}
@@ -49,18 +54,18 @@ public class BirthdayRemainder {
 						}
 					}
 					else{
-						
+						currentcounter++;
 					}
 				}
+			}
+			if(linecounter == currentcounter)
+			{
+				System.out.println("Today there is no birthday babies-)");
 			}
 		}
 		catch(Exception ex){
 			ex.printStackTrace();
-		}
-		finally{
-			buff.close();
-		}
-		
 
+	}
 	}
 }

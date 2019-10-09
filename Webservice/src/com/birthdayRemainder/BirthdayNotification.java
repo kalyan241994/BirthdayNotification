@@ -30,10 +30,7 @@ public class BirthdayNotification {
 		}
 	catch(Exception ex){
 		ex.printStackTrace();
-	}
-	finally{
-		System.exit(0);
-	}
+		}
 	}
 	
 }
