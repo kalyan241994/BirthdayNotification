@@ -67,5 +67,12 @@ public class BirthdayRemainder implements Job {
 			ex.printStackTrace();
 
 	}
+		finally {
+			try {
+				buff.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
